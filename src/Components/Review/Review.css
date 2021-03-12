@@ -1,0 +1,26 @@
+main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  padding: 0 50px;
+}
+
+.item {
+  border-right: 1px solid lightgray;
+  min-height: 75vh;
+}
+
+.item > div {
+  padding: 1em;
+  margin: 5px;
+  border-bottom: 1px solid lightgray;
+}
+.cart {
+  padding: 0 20px;
+}
+.item button {
+  border: none;
+  padding: 5px 15px;
+  background-color: orangered;
+  color: #fff;
+  border-radius: 5px;
+}
