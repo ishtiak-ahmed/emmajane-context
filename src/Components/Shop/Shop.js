@@ -5,7 +5,7 @@ import Product from '../Product/Product';
 import "./Shop.css"
 import Button from '@material-ui/core/Button';
 import { addToDatabaseCart, getDatabaseCart } from '../../utilities/databaseManager';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Shop = () => {
     const [page, setPage] = useState(1)
@@ -61,9 +61,9 @@ const Shop = () => {
             </div>
             <div className="cart-container">
                 <Cart cart={cart}>
-                    <NavLink to='/review'>
+                    <Link to='/review'>
                         <button>Review Order</button>
-                    </NavLink>
+                    </Link>
                 </Cart>
             </div>
         </div>
