@@ -1,5 +1,4 @@
 import React from 'react';
-import Like from '../Like';
 import './Cart.css'
 const Cart = (props) => {
     const formatNumber = num => (Number(num.toFixed(2)))
@@ -27,7 +26,6 @@ const Cart = (props) => {
             {
                 props.children
             }
-            <Like></Like>
             <p id="dev"><small>Developed by <a href="https://github.com/ishtiak-ahmed">Ishtiak Ahmed</a></small></p>
         </div>
     );

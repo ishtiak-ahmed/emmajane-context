@@ -1,6 +1,7 @@
 import './App.css';
 import Header from './Components/Header/Header';
 import Shop from './Components/Shop/Shop';
+import Login from './Components/Login/Login'
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,11 +10,16 @@ import {
 } from "react-router-dom";
 import ProductDetail from './Components/ProductDetail/ProductDetail';
 import Review from './Components/Review/Review';
+import Shipment from './Components/Shipment/Shipment'
+import { createContext, useState } from 'react'
+import PrivateRoute from './Components/Review/PrivateRoute/PrivateRoute';
 
+export const UserContenxt = createContext()
 
 function App() {
+  const [loggedinUser, setLoggedinUser] = useState({})
   return (
-    <div className="App">
+    <UserContenxt.Provider value={[loggedinUser, setLoggedinUser]}>
       <Router>
         <Header></Header>
         <Switch>
@@ -26,20 +32,25 @@ function App() {
           <Route path="/review">
             <Review></Review>
           </Route>
-          <Route path="/manage">
+          <PrivateRoute path="/manage">
             <h1>Manage Inventory</h1>
-          </Route>
+          </PrivateRoute>
           <Route path="/product/:productKey">
             <ProductDetail></ProductDetail>
           </Route>
+          <Route path='/login'>
+            <Login></Login>
+          </Route>
+          <PrivateRoute path='/shipment'>
+            <Shipment></Shipment>
+          </PrivateRoute>
           <Route path='*'>
             <h1>Page not found, 404 error</h1>
             <h2>Try something else or go to <Link to="/">Home</Link></h2>
           </Route>
         </Switch>
       </Router>
-    </div>
-
+    </UserContenxt.Provider>
   );
 }
 

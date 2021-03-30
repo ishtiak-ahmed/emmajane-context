@@ -9,20 +9,19 @@ import { Link } from 'react-router-dom';
 
 const Shop = () => {
     const [page, setPage] = useState(1)
-    const currentRange = (num, num2) => fakeData.slice(num, num2)
     const [products, setProducts] = useState([])
     const [cart, setCart] = useState([])
     useEffect(() => {
         let range = [[0, 0], [0, 10], [10, 20], [20, 30], [30, 40], [40, 50], [50, 60], [60, 70], [70, 81]]
-        const currentItem = currentRange(...range[page]);
-        setProducts(currentItem)
+        const items = fakeData.slice(...range[page])
+        setProducts(items)
     }, [page])
     useEffect(() => {
-        const saveCart = getDatabaseCart()
-        const productKeys = Object.keys(saveCart)
+        const savedCart = getDatabaseCart()
+        const productKeys = Object.keys(savedCart)
         const cartProduct = productKeys.map(key => {
             const product = fakeData.find(pd => pd.key === key)
-            product.count = saveCart[key]
+            product.count = savedCart[key]
             product.totalPrice = product.price * product.count
             return product
         })

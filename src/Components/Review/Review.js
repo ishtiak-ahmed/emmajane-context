@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import fakeData from '../../fakeData';
-import { getDatabaseCart, processOrder, removeFromDatabaseCart } from '../../utilities/databaseManager';
+import { getDatabaseCart, removeFromDatabaseCart } from '../../utilities/databaseManager';
 import ReviewItem from './ReviewItem';
 import Cart from '../Cart/Cart';
 import './Review.css'
 import happyImage from "../../images/giphy.gif"
+import { useHistory } from 'react-router';
 
 
 const Review = () => {
@@ -29,10 +30,9 @@ const Review = () => {
         removeFromDatabaseCart(key)
     }
 
+    const history = useHistory()
     const handlePlaceOrder = () => {
-        setCart([])
-        setOrderPlaced(true)
-        processOrder()
+        history.push('/shipment')
     }
     return (
         <main>

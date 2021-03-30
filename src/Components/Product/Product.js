@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
 import "./Product.css"
 import { Link } from 'react-router-dom';
+import Like from '../Like';
 const Product = (props) => {
     const { img, name, price, stock, seller, key } = props.product
     return (
@@ -19,6 +20,7 @@ const Product = (props) => {
                 {props.showButton &&
                     <button onClick={() => props.handleAddProduct(props.product)} className="add-cart"><FontAwesomeIcon icon={faCartPlus} /> Add To Cart</button>
                 }
+                <Like></Like>
             </div>
         </div>
     );

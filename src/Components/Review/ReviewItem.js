@@ -5,7 +5,7 @@ const ReviewItem = (props) => {
     return (
         <div>
             <h4>{name}</h4>
-            <p>{seller}</p>
+            <p>Seller: {seller}</p>
             <p>Quantity: {count}</p>
             <p>Total Price : {price * count}</p>
             <button onClick={() => props.event(key)}>Remove</button>
